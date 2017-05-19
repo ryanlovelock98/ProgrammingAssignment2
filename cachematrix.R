@@ -1,3 +1,10 @@
+## Description
+## The code contains two functions to return the inverse of the matrix. 
+## The first allows the matrix to be inverted and the second checks to see whether the inverse exists
+
+## The makeCacheMatrix function creates the list of functions needed for cacheSolve and stores the matrix to be inverted
+## it will also clear the cache for the second folder
+
 makeCacheMatrix <- function(x = matrix()) {
   cachedInv <- NULL
   
@@ -15,6 +22,11 @@ makeCacheMatrix <- function(x = matrix()) {
   getInverse  <- function() cachedInv
   list(set=set, get=get, setInverse=setInverse, getInverse=getInverse)
 }
+## cacheSolve retruns the inverted matrix
+##if the inverse matrix is not the cache, this function will create it and store it there.
+
+
+
 cacheSolve <- function(x=makeCacheMatrix(1:4, nrow=2, ncol=2), ...) { 
   
   calculatedInverse <- x$getInverse() 
@@ -40,3 +52,5 @@ cacheSolve <- function(x=makeCacheMatrix(1:4, nrow=2, ncol=2), ...) {
   message("Setting the value of inverse to:") 
   x$setInverse(calculatedInverse)
 }
+
+## if this is run twice, the message 'cached data' will appear
